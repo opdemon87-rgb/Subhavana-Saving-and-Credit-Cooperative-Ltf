@@ -1,0 +1,63 @@
+# ---------- Dependencies ----------
+node_modules/
+.pnp
+.pnp.js
+
+# ---------- Next.js ----------
+.next/
+out/
+build/
+dist/
+
+# ---------- Environment files (SECRETS) ----------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# ---------- Database ----------
+prisma/dev.db
+prisma/dev.db-journal
+backend/db/dev.db
+backend/db/dev.db-journal
+*.sqlite
+*.sqlite3
+
+# ---------- Logs ----------
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---------- OS junk ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ---------- Editor junk ----------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------- TypeScript ----------
+*.tsbuildinfo
+next-env.d.ts
+
+# ---------- Testing ----------
+coverage/
+
+# ---------- Misc ----------
+.eslintcache
+*.pem
+*.key
