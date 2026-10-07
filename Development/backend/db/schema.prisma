@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  phone        String   @unique
+  passwordHash String
+  fullName     String
+  role         String   @default("MEMBER")
+  kycStatus    String   @default("PENDING")
+  province     String?
+  memberSince  DateTime @default(now())
+
+  applications LoanApplication[]
+}
+
+model InterestRate {
+  id            String   @id @default(cuid())
+  product       String
+  category      String
+  rate          Float
+  minDeposit    Float?
+  tenureMonths  Int?
+  description   String?
+  featured      Boolean  @default(false)
+  iconKey       String?
+  effectiveFrom DateTime @default(now())
+}
+
+model LoanApplication {
+  id             String   @id @default(cuid())
+  referenceNo    String   @unique @default(cuid())
+  memberId       String?
+  fullName       String
+  email          String
+  phone          String
+  loanType       String
+  amount         Float
+  durationMonths Int
+  purpose        String?
+  status         String   @default("SUBMITTED")
+  createdAt      DateTime @default(now())
+
+  member Member? @relation(fields: [memberId], references: [id])
+}
+
+model Notice {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  dateBS      String
+  dateAD      DateTime
+  fileUrl     String?
+  fileSize    String?
+  isNew       Boolean  @default(false)
+  publishedAt DateTime @default(now())
+}
+
+model NewsPost {
+  id       String   @id @default(cuid())
+  title    String
+  slug     String   @unique
+  category String
+  excerpt  String
+  imageUrl String?
+  altText  String?
+  dateBS   String
+  dateAD   DateTime
+}
+
+model Branch {
+  id           String  @id @default(cuid())
+  name         String
+  province     String
+  address      String
+  phone        String
+  manager      String?
+  hours        String  @default("Sun–Fri, 10:00 AM – 4:00 PM")
+  latitude     Float?
+  longitude    Float?
+  isHeadOffice Boolean @default(false)
+}
+
+model Testimonial {
+  id       String  @id @default(cuid())
+  name     String
+  role     String
+  location String
+  quote    String
+  rating   Int     @default(5)
+  product  String?
+}
+
+model Faq {
+  id       String  @id @default(cuid())
+  question String
+  answer   String
+  order    Int     @default(0)
+}
