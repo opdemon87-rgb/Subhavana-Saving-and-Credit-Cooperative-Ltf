@@ -194,7 +194,7 @@ export default function RegisterPage() {
                 </select>
               </div>
             </div>
-
+//fixed 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="password" className="text-sm font-medium">
