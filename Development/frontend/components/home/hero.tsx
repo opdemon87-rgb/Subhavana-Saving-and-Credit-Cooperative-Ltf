@@ -3,9 +3,9 @@ import { ArrowRight, Calculator, HandCoins, PiggyBank, ShieldCheck, Smartphone }
 
 const quickActions = [
   { title: 'Open Savings', desc: 'Start in 10 minutes', icon: PiggyBank, href: '#rates' },
-  { title: 'Apply for Loan', desc: 'Quick approval', icon: HandCoins, href: '#services' },
+  { title: 'Apply for Loan', desc: 'Quick approval', icon: HandCoins, href: '/apply-loan' },
   { title: 'Calculate EMI', desc: 'Plan repayments', icon: Calculator, href: '#emi' },
-  { title: 'Download App', desc: 'Bank on the go', icon: Smartphone, href: '#digital' },
+  { title: 'Digital Services', desc: 'SMS & remittance', icon: Smartphone, href: '#digital' },
 ]
 
 export function Hero() {
@@ -14,45 +14,46 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-12 md:pb-28 md:pt-16 lg:grid-cols-2 lg:pb-36">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent px-3 py-1 text-xs font-semibold text-primary">
-  <ShieldCheck className="size-3.5" aria-hidden="true" />
-  Registered under Department of Cooperatives · Est. 2065 B.S.
-</span>
+            <ShieldCheck className="size-3.5" aria-hidden="true" />
+            Registered under Department of Cooperatives · Est. 2065 B.S.
+          </span>
           <h1 className="mt-5 text-pretty text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
-  सुभावना बचत तथा ऋण सहकारी संस्था लि.{' '}
-  <span className="text-primary">सदस्यको सहकारी</span>
-</h1>
+            सुभावना बचत तथा ऋण सहकारी संस्था लि.{' '}
+            <span className="text-primary">सदस्यको सहकारी</span>
+          </h1>
           <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-  Serving Maharajgunj and Greater Kathmandu since 2065 B.S. with competitive savings rates,
-  affordable credit, and member-first cooperative banking.
-</p>
+            Serving Small Business Owners and Families in Kathmandu since 2065 B.S. with competitive
+            savings rates, affordable credit, and member-first cooperative banking.
+          </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-           href="/register"
-          className="rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-gold-foreground shadow-sm transition-colors hover:bg-amber-400"
-          >
-          Become a Member
-        </a>
+              href="/register"
+              className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-sm transition-colors hover:bg-amber-400"
+            >
+              Become a Member
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </a>
             <a
-              href="/rates"
+              href="#rates"
               className="inline-flex items-center rounded-lg border bg-background px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
             >
               View Interest Rates
             </a>
           </div>
           <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-  <div>
-    <dt className="text-xs text-muted-foreground">Savings up to</dt>
-    <dd className="text-2xl font-bold text-foreground">12% p.a.</dd>
-  </div>
-  <div className="border-l pl-8">
-    <dt className="text-xs text-muted-foreground">Loans at</dt>
-    <dd className="text-2xl font-bold text-foreground">16% p.a.</dd>
-  </div>
-  <div className="sm:border-l sm:pl-8">
-    <dt className="text-xs text-muted-foreground">Member-owned since</dt>
-    <dd className="text-2xl font-bold text-foreground">2065 B.S.</dd>
-  </div>
-</dl>
+            <div>
+              <dt className="text-xs text-muted-foreground">Savings up to</dt>
+              <dd className="text-2xl font-bold text-foreground">12% p.a.</dd>
+            </div>
+            <div className="border-l pl-8">
+              <dt className="text-xs text-muted-foreground">Loans at</dt>
+              <dd className="text-2xl font-bold text-foreground">16% p.a.</dd>
+            </div>
+            <div className="sm:border-l sm:pl-8">
+              <dt className="text-xs text-muted-foreground">Member-owned since</dt>
+              <dd className="text-2xl font-bold text-foreground">2065 B.S.</dd>
+            </div>
+          </dl>
         </div>
 
         <div className="relative">
@@ -90,7 +91,9 @@ export function Hero() {
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-foreground md:text-base">{title}</span>
+                  <span className="block text-sm font-semibold text-foreground md:text-base">
+                    {title}
+                  </span>
                   <span className="block text-xs text-muted-foreground">{desc}</span>
                 </span>
               </a>
