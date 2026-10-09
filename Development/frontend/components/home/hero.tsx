@@ -27,12 +27,11 @@ export function Hero() {
 </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="/register"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-emerald-900"
-            >
-              Become a Member
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </a>
+           href="/register"
+          className="rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-gold-foreground shadow-sm transition-colors hover:bg-amber-400"
+          >
+          Become a Member
+        </a>
             <a
               href="/rates"
               className="inline-flex items-center rounded-lg border bg-background px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"

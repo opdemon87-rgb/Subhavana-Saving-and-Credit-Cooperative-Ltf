@@ -110,7 +110,7 @@ export function SiteHeader() {
             Member Login
           </a>
           <a
-            href="#join"
+            href="/register"
             className="rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-gold-foreground shadow-sm transition-colors hover:bg-amber-400"
           >
             Become a Member
