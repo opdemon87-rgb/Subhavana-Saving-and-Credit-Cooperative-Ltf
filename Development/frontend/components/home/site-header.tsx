@@ -92,7 +92,7 @@ export function SiteHeader() {
 </li>
 <li>
   <a
-    href="#branches"
+    href="/branches"
     className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
   >
     Branches
@@ -103,7 +103,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <a
-            href="#login"
+            href="/login"
             className="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             <LogIn className="size-4" aria-hidden="true" />
@@ -171,7 +171,7 @@ export function SiteHeader() {
 </li>
 <li>
   <a
-    href="#branches"
+    href="/branches"
     onClick={() => setMobileOpen(false)}
     className="block rounded-md px-3 py-3 text-sm font-semibold hover:bg-secondary"
   >
@@ -181,7 +181,7 @@ export function SiteHeader() {
           </ul>
           <div className="mx-auto flex max-w-7xl gap-2 px-4 pb-4">
             <a
-              href="#login"
+              href="/login"
               className="flex-1 rounded-lg border-2 border-primary px-4 py-2.5 text-center text-sm font-semibold text-primary"
             >
               Member Login
