@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ArrowRight, Calculator, HandCoins, PiggyBank, ShieldCheck, Smartphone } from 'lucide-react'
+import { Calculator, HandCoins, PiggyBank, ShieldCheck, Smartphone } from 'lucide-react'
 
 const quickActions = [
   { title: 'Open Savings', desc: 'Start in 10 minutes', icon: PiggyBank, href: '#rates' },
@@ -21,25 +21,11 @@ export function Hero() {
             सुभावना बचत तथा ऋण सहकारी संस्था लि.{' '}
             <span className="text-primary">सदस्यको सहकारी</span>
           </h1>
-          <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
             Serving Small Business Owners and Families in Kathmandu since 2065 B.S. with competitive
             savings rates, affordable credit, and member-first cooperative banking.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="/register"
-              className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-sm transition-colors hover:bg-amber-400"
-            >
-              Become a Member
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </a>
-            <a
-              href="#rates"
-              className="inline-flex items-center rounded-lg border bg-background px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
-            >
-              View Interest Rates
-            </a>
-          </div>
+
           <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
             <div>
               <dt className="text-xs text-muted-foreground">Savings up to</dt>
