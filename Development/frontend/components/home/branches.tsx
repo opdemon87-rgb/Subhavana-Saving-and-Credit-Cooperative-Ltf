@@ -12,7 +12,7 @@ export function Branches() {
   const visible = province === 'All' ? branches : branches.filter((b) => b.province === province)
 
   return (
-    <section id="branches" className="scroll-mt-16 bg-background py-16 md:py-24" aria-labelledby="branches-heading">
+    <section id="branches" className="scroll-mt-16 bg-background py-12 md:py-16" aria-labelledby="branches-heading">
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
