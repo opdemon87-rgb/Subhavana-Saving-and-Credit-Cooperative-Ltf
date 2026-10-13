@@ -143,7 +143,7 @@ export function SavingsReturnCalculator() {
       </div>
 
       <a
-        href="#rates"
+        href="/open-fd"
         className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
       >
         Open Fixed Deposit
