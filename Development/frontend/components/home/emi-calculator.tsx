@@ -179,7 +179,7 @@ export function EmiCalculator() {
       </div>
 
       <a
-        href="#services"
+        href="/apply-loan"
         className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-gold-foreground transition-colors hover:bg-amber-400"
       >
         Apply Now
