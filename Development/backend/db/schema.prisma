@@ -104,3 +104,39 @@ model Faq {
   answer   String
   order    Int     @default(0)
 }
+
+
+model Transaction {
+  id          String   @id @default(cuid())
+  memberId    String?
+  type        String   // DEPOSIT | WITHDRAWAL
+  amount      Float
+  note        String?
+  createdAt   DateTime @default(now())
+
+  member      Member?  @relation(fields: [memberId], references: [id], onDelete: SetNull)
+
+  @@index([type, createdAt])
+}
+
+model Loan {
+  id          String   @id @default(cuid())
+  memberId    String?
+  amount      Float
+  status      String   @default("ACTIVE") // ACTIVE | CLOSED | DEFAULTED
+  disbursedAt DateTime @default(now())
+  closedAt    DateTime?
+
+  member      Member?  @relation(fields: [memberId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+}
+
+model ShareContribution {
+  id        String   @id @default(cuid())
+  memberId  String?
+  amount    Float
+  createdAt DateTime @default(now())
+
+  member    Member?  @relation(fields: [memberId], references: [id], onDelete: SetNull)
+}
