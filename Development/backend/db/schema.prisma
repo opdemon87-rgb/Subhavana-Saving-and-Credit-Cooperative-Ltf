@@ -13,12 +13,21 @@ model Member {
   phone        String   @unique
   passwordHash String
   fullName     String
-  role         String   @default("MEMBER")
-  kycStatus    String   @default("PENDING")
+  role         String   @default("MEMBER")        // MEMBER | STAFF | ADMIN
+  kycStatus    String   @default("PENDING")       // PENDING | VERIFIED | REJECTED
   province     String?
+  address      String?
   memberSince  DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
+  // Relations — one member can have many of each
   applications LoanApplication[]
+  transactions Transaction[]
+  loans        Loan[]
+  shares       ShareContribution[]
+
+  @@index([email])
+  @@index([phone])
 }
 
 model InterestRate {
@@ -48,7 +57,7 @@ model LoanApplication {
   status         String   @default("SUBMITTED")
   createdAt      DateTime @default(now())
 
-  member Member? @relation(fields: [memberId], references: [id])
+  member Member? @relation(fields: [memberId], references: [id], onDelete: SetNull)
 }
 
 model Notice {
