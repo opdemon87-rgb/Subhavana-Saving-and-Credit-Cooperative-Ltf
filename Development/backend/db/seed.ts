@@ -1,5 +1,5 @@
-
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
@@ -53,7 +53,7 @@ async function main() {
       { product: 'Fixed Deposit (2 yr)', category: 'FIXED_DEPOSIT', rate: 11.5, minDeposit: 25000, tenureMonths: 24, iconKey: 'Lock' },
       { product: 'Fixed Deposit (3 yr)', category: 'FIXED_DEPOSIT', rate: 12.0, minDeposit: 25000, tenureMonths: 36, featured: true, iconKey: 'Sparkles' },
 
-      // Loans
+      // Loans (uniform 16%)
       { product: 'Commercial Loan', category: 'LOAN', rate: 16.0, description: 'For registered businesses & SMEs' },
       { product: 'Real Estate Loan', category: 'LOAN', rate: 16.0, description: 'Land, housing & property purchase' },
       { product: 'Personal Loan', category: 'LOAN', rate: 16.0, description: 'General purpose personal credit' },
@@ -101,7 +101,62 @@ async function main() {
     ],
   })
 
-  console.log('✓ Seeded core Subhavana website data')
+  // ---------- Demo member ----------
+  const demoMember = await prisma.member.upsert({
+    where: { email: 'demo@subhavana.coop.np' },
+    update: {},
+    create: {
+      email: 'demo@subhavana.coop.np',
+      phone: '9800000000',
+      fullName: 'Demo Member',
+      passwordHash: await bcrypt.hash('demo1234', 10),
+      kycStatus: 'VERIFIED',
+      province: 'Bagmati',
+    },
+  })
+
+  // ---------- Transactions (drives live Impact Stats) ----------
+  await prisma.transaction.createMany({
+    data: [
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 45_000, note: 'Initial savings — Sunita Maharjan' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 82_000, note: 'Monthly deposit — Bishnu Timalsina' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 120_000, note: 'FD opening — Anita Shrestha' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 35_000, note: 'Regular savings deposit' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 60_000, note: 'Child savings — opened by parent' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 25_000, note: 'Women savings deposit' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 150_000, note: 'Fixed Deposit — 3 year' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 18_000, note: 'Senior citizen savings' },
+      { memberId: demoMember.id, type: 'DEPOSIT', amount: 92_000, note: 'Recurring deposit installment' },
+      { memberId: demoMember.id, type: 'WITHDRAWAL', amount: 15_000, note: 'Partial withdrawal — emergency' },
+      { memberId: demoMember.id, type: 'WITHDRAWAL', amount: 8_500, note: 'ATM withdrawal' },
+    ],
+  })
+
+  // ---------- Loans (active portfolio) ----------
+  await prisma.loan.createMany({
+    data: [
+      { memberId: demoMember.id, amount: 800_000, status: 'ACTIVE' },
+      { memberId: demoMember.id, amount: 250_000, status: 'ACTIVE' },
+      { memberId: demoMember.id, amount: 1_500_000, status: 'ACTIVE' },
+      { memberId: demoMember.id, amount: 400_000, status: 'ACTIVE' },
+      { memberId: demoMember.id, amount: 320_000, status: 'ACTIVE' },
+      { memberId: demoMember.id, amount: 180_000, status: 'CLOSED' },
+    ],
+  })
+
+  // ---------- Share contributions ----------
+  await prisma.shareContribution.createMany({
+    data: [
+      { memberId: demoMember.id, amount: 5_000 },
+      { memberId: demoMember.id, amount: 5_000 },
+      { memberId: demoMember.id, amount: 10_000 },
+      { memberId: demoMember.id, amount: 5_000 },
+      { memberId: demoMember.id, amount: 25_000 },
+      { memberId: demoMember.id, amount: 50_000 },
+    ],
+  })
+
+  console.log('✓ Seeded Subhavana data + transactions + loans + shares')
 }
 
 main()
