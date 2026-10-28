@@ -140,9 +140,9 @@ export const loanRates: LoanRate[] = [
 ]
 
 export const rateHighlights = {
-  savingsRange: '5.00% – 12.00%',
-  loanRate: '16.00%',
-  fdRange: '11.00% – 12.00%',
+  savingsRange: '5.50% – 12.00%',
+  loanRate: '12.50% – 15.50%',
+  fdRange: '9.50% – 12.00%',
 } as const
 
 // ---------- News & Notices ----------
