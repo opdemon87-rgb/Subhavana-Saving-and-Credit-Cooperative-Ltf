@@ -125,6 +125,7 @@ export const savingsRates: SavingsRate[] = [
 ]
 
 export const fixedDepositRates: FixedDepositRate[] = [
+  { tenure: '6 Months', rate: 9.5, months: 6 },
   { tenure: '1 Year', rate: 11.0, months: 12 },
   { tenure: '2 Years', rate: 11.5, months: 24 },
   { tenure: '3 Years', rate: 12.0, months: 36, featured: true },
