@@ -116,11 +116,11 @@ export type LoanRate = {
 
 
 export const savingsRates: SavingsRate[] = [
-  { type: 'Ordinary Savings', rate: 5.5, note: 'Standard account with minimum balance', minDeposit: 'Rs. 500' },
+  { type: 'Ordinary Savings', rate: 6.0, note: 'Standard account with minimum balance', minDeposit: 'Rs. 500' },
   { type: 'Regular Savings', rate: 12.0, note: 'Highest-yield savings for regular depositors', minDeposit: 'Rs. 1,000', featured: true },
-  { type: 'Women Savings', rate: 8.5, note: 'Exclusive account for women members', minDeposit: 'Rs. 500' },
-  { type: 'Senior Citizen Savings', rate: 8.5, note: 'For members aged 60 and above', minDeposit: 'Rs. 500' },
-  { type: 'Daily Savings', rate: 5.0, note: 'Daily collection scheme for small vendors', minDeposit: 'Rs. 100/day' },
+  { type: 'Women Savings', rate: 9.0, note: 'Exclusive account for women members', minDeposit: 'Rs. 500' },
+  { type: 'Senior Citizen Savings', rate: 9.0, note: 'For members aged 60 and above', minDeposit: 'Rs. 500' },
+  { type: 'Daily Savings', rate: 5.5, note: 'Daily collection scheme for small vendors', minDeposit: 'Rs. 100/day' },
   { type: 'Child Savings', rate: 12.0, note: 'Highest rate — for members under 18', minDeposit: 'Rs. 500', featured: true },
 ]
 
