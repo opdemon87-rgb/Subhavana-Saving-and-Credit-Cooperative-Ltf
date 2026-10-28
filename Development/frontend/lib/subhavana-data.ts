@@ -132,11 +132,11 @@ export const fixedDepositRates: FixedDepositRate[] = [
 ]
 
 export const loanRates: LoanRate[] = [
-  { type: 'Commercial Loan', rate: 16.0, note: 'For registered businesses & SMEs' },
-  { type: 'Real Estate Loan', rate: 16.0, note: 'Land, housing & property purchase' },
-  { type: 'Personal Loan', rate: 16.0, note: 'General purpose personal credit' },
-  { type: 'Hire Purchase Loan', rate: 16.0, note: 'Vehicle, equipment & appliances' },
-  { type: 'Agriculture Loan', rate: 16.0, note: 'Farming, livestock & agri-inputs' },
+  { type: 'Commercial Loan', rate: 14.5, note: 'For registered businesses & SMEs' },
+  { type: 'Agriculture Loan', rate: 12.5, note: 'Farming, livestock & agri-inputs' },
+  { type: 'Home & Real Estate Loan', rate: 13.0, note: 'Land, housing & property purchase' },
+  { type: 'Hire Purchase Loan', rate: 14.0, note: 'Vehicle, equipment & appliances' },
+  { type: 'Personal Loan', rate: 15.5, note: 'General purpose personal credit' },
 ]
 
 export const rateHighlights = {
