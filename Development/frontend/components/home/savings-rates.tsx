@@ -94,18 +94,15 @@ export function SavingsRates() {
                   <th scope="col" className="px-6 py-4 font-semibold">
                     Account Type
                   </th>
-
                   <th scope="col" className="px-6 py-4 font-semibold">
                     Rate (p.a.)
                   </th>
-
                   <th
                     scope="col"
                     className="hidden px-6 py-4 font-semibold md:table-cell"
                   >
                     Min. Deposit
                   </th>
-
                   <th scope="col" className="px-6 py-4 text-right font-semibold">
                     <span className="sr-only">Action</span>
                   </th>
@@ -118,15 +115,12 @@ export function SavingsRates() {
                     <tr
                       key={type}
                       className={
-                        featured
-                          ? 'bg-accent/70'
-                          : 'hover:bg-secondary/60'
+                        featured ? 'bg-accent/70' : 'hover:bg-secondary/60'
                       }
                     >
                       <th scope="row" className="px-6 py-4 font-normal">
                         <span className="flex items-center gap-2 font-semibold text-foreground">
                           {type}
-
                           {featured && (
                             <span className="rounded bg-gold px-1.5 py-0.5 text-[10px] font-bold uppercase text-gold-foreground">
                               Top Rate
@@ -158,10 +152,7 @@ export function SavingsRates() {
                           )}
                         >
                           Open Account
-                          <ArrowRight
-                            className="size-3.5"
-                            aria-hidden="true"
-                          />
+                          <ArrowRight className="size-3.5" aria-hidden="true" />
                         </a>
                       </td>
                     </tr>
@@ -172,13 +163,53 @@ export function SavingsRates() {
           </div>
         )}
 
-        {/* Temporary placeholders for Parts 3 and 4 */}
+        {/* Part 3: Fixed deposit cards */}
         {tab === 'fd' && (
-          <div className="mt-6 rounded-2xl border bg-background p-6 text-muted-foreground">
-            Fixed deposit cards will be added in Part 3.
-          </div>
+          <ul className="mt-6 grid gap-5 md:grid-cols-3">
+            {fixedDepositRates.map(({ tenure, rate, months, featured }) => (
+              <li
+                key={tenure}
+                className={cn(
+                  'relative flex flex-col rounded-2xl border bg-background p-6 shadow-sm',
+                  featured && 'border-primary/40 ring-1 ring-primary/20',
+                )}
+              >
+                {featured && (
+                  <span className="absolute -top-3 left-6 rounded-full bg-gold px-3 py-0.5 text-[10px] font-bold uppercase text-gold-foreground">
+                    Best Rate
+                  </span>
+                )}
+
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {tenure} Fixed Deposit
+                </p>
+
+                <p className="mt-3 text-4xl font-bold tabular-nums text-primary">
+                  {rate.toFixed(2)}%
+                  <span className="ml-1 text-sm font-medium text-muted-foreground">
+                    p.a.
+                  </span>
+                </p>
+
+                <ul className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
+                  <li>Tenure: {months} months</li>
+                  <li>Minimum: Rs. 25,000</li>
+                  <li>Interest paid at maturity</li>
+                </ul>
+
+                <a
+                  href="/apply-loan"
+                  className="mt-6 inline-flex items-center justify-center gap-1.5 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  Invest now
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
         )}
 
+        {/* Temporary placeholder for Part 4 */}
         {tab === 'loans' && (
           <div className="mt-6 rounded-2xl border bg-background p-6 text-muted-foreground">
             Loan rate cards will be added in Part 4.
