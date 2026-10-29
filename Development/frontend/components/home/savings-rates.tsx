@@ -209,11 +209,36 @@ export function SavingsRates() {
           </ul>
         )}
 
-        {/* Temporary placeholder for Part 4 */}
+        {/* Part 4: Loan rate cards */}
         {tab === 'loans' && (
-          <div className="mt-6 rounded-2xl border bg-background p-6 text-muted-foreground">
-            Loan rate cards will be added in Part 4.
-          </div>
+          <ul className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {loanRates.map(({ type, rate, note }) => (
+              <li
+                key={type}
+                className="flex flex-col rounded-2xl border bg-background p-5 shadow-sm"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-semibold">{type}</h3>
+
+                  <span className="rounded-full bg-primary/10 px-2.5 py-1 text-sm font-bold tabular-nums text-primary">
+                    {rate.toFixed(2)}%
+                  </span>
+                </div>
+
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                  {note}
+                </p>
+
+                <a
+                  href="/apply-loan"
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Apply now
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
         )}
 
         {/* Rate disclaimer */}
