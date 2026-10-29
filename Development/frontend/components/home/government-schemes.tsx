@@ -175,7 +175,45 @@ export default function GovernmentSchemes() {
             );
           })}
         </ul>
+
+        {/* Part 4: How to apply information banner */}
+        <div className="mt-10 rounded-2xl border border-border bg-background p-6 shadow-sm sm:p-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <Info className="h-6 w-6" aria-hidden="true" />
+              </div>
+
+              <div className="max-w-2xl">
+                <h3 className="text-lg font-bold text-foreground sm:text-xl">
+                  How to apply for a government-subsidized loan
+                </h3>
+
+                <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                  Bring your citizenship certificate, project proposal, ward
+                  recommendation letter, and, for agriculture-related
+                  applications, your land ownership certificate. Our loan
+                  officer can guide you through the application and agency
+                  approval process.
+                </p>
+
+                <p className="mt-3 text-sm font-medium text-foreground">
+                  Typical turnaround: 10–14 working days
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="/apply-loan"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Start application
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+
