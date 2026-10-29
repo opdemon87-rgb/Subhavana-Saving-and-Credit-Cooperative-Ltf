@@ -64,3 +64,42 @@ const schemes: Scheme[] = [
     tags: ['Women', 'Small Scale', 'Cottage Industry'],
   },
 ]
+
+export function GovernmentSchemes() {
+  return (
+    <section
+      id="schemes"
+      className="scroll-mt-16 bg-secondary py-16 md:py-24"
+      aria-labelledby="schemes-heading"
+    >
+      <div className="mx-auto max-w-7xl px-4">
+        {/* Section heading */}
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              Government Partnership
+            </p>
+
+            <h2
+              id="schemes-heading"
+              className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl"
+            >
+              Subsidized schemes through Subhavana
+            </h2>
+
+            <p className="mt-3 text-muted-foreground">
+              As an empanelled cooperative lender, we help members access
+              Government of Nepal subsidized credit programs at below-market
+              interest rates.
+            </p>
+          </div>
+
+          <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-gold/20 px-3 py-1.5 text-sm font-semibold text-amber-800 md:self-auto">
+            <Banknote className="size-4" aria-hidden="true" />
+            4 active schemes
+          </span>
+        </div>
+      </div>
+    </section>
+  )
+}
