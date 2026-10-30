@@ -65,7 +65,7 @@ const schemes: Scheme[] = [
   },
 ];
 
-export function GovernmentSchemes() {
+export  function GovernmentSchemes() {
   return (
     <section
       id="schemes"
@@ -212,7 +212,27 @@ export function GovernmentSchemes() {
             </a>
           </div>
         </div>
+
+        {/* Part 5: Government scheme disclaimer */}
+        <div className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-background/70 p-4">
+          <Tractor
+            className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground"
+            aria-hidden="true"
+          />
+
+          <p className="text-xs leading-6 text-muted-foreground">
+            <strong className="font-semibold text-foreground">
+              Important disclaimer:
+            </strong>{" "}
+            Subsidy percentages and scheme conditions may change with each
+            fiscal year. Final eligibility and approval are determined by the
+            relevant government agency, not by Subhavana Saving and Credit
+            Cooperative. Please contact our office for the latest information
+            before applying.
+          </p>
+        </div>
       </div>
     </section>
   );
 }
+
