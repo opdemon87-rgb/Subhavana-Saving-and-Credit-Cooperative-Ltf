@@ -40,10 +40,7 @@ export function LoanEligibility() {
           {/* Part 2: Introduction and member benefits */}
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary">
-              <ShieldCheck
-                className="size-3.5"
-                aria-hidden="true"
-              />
+              <ShieldCheck className="size-3.5" aria-hidden="true" />
               Member Exclusive
             </span>
 
@@ -94,7 +91,7 @@ export function LoanEligibility() {
             </ul>
           </div>
 
-          {/* Part 3: Interactive calculator */}
+          {/* Part 3 and 4: Interactive calculator */}
           <div className="rounded-3xl border bg-secondary/30 p-6 shadow-sm md:p-8">
             <h3 className="text-xl font-bold">
               Eligibility Calculator
@@ -102,7 +99,7 @@ export function LoanEligibility() {
 
             <div className="mt-6 flex flex-col gap-6">
 
-              {/* Total Savings slider */}
+              {/* Total Savings */}
               <div>
                 <div className="flex items-center justify-between">
                   <label
@@ -131,6 +128,74 @@ export function LoanEligibility() {
                   style={
                     {
                       '--fill': `${(savings / 2_000_000) * 100}%`,
+                    } as React.CSSProperties
+                  }
+                />
+              </div>
+
+              {/* Part 4: Share Capital */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="shares-slider"
+                    className="text-sm font-medium"
+                  >
+                    Share Capital
+                  </label>
+
+                  <span className="font-semibold tabular-nums text-primary">
+                    {formatNPR(shares)}
+                  </span>
+                </div>
+
+                <input
+                  id="shares-slider"
+                  type="range"
+                  min={5_000}
+                  max={500_000}
+                  step={5_000}
+                  value={shares}
+                  onChange={(e) =>
+                    setShares(Number(e.target.value))
+                  }
+                  className="range-input mt-3"
+                  style={
+                    {
+                      '--fill': `${(shares / 500_000) * 100}%`,
+                    } as React.CSSProperties
+                  }
+                />
+              </div>
+
+              {/* Part 4: Existing Loans */}
+              <div className="border-t pt-4">
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="existing-loan-slider"
+                    className="text-sm font-medium text-muted-foreground"
+                  >
+                    Existing Loans (if any)
+                  </label>
+
+                  <span className="font-semibold tabular-nums text-muted-foreground">
+                    {formatNPR(existingLoan)}
+                  </span>
+                </div>
+
+                <input
+                  id="existing-loan-slider"
+                  type="range"
+                  min={0}
+                  max={1_000_000}
+                  step={10_000}
+                  value={existingLoan}
+                  onChange={(e) =>
+                    setExistingLoan(Number(e.target.value))
+                  }
+                  className="range-input mt-3"
+                  style={
+                    {
+                      '--fill': `${(existingLoan / 1_000_000) * 100}%`,
                     } as React.CSSProperties
                   }
                 />
