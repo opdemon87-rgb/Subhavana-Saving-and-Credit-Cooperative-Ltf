@@ -59,21 +59,15 @@ export function LoanEligibility() {
             </p>
 
             <ul className="mt-8 flex flex-col gap-5">
-
-              {/* Benefit 1 */}
               <li className="flex gap-4">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                  <Wallet
-                    className="size-5"
-                    aria-hidden="true"
-                  />
+                  <Wallet className="size-5" aria-hidden="true" />
                 </span>
 
                 <div>
                   <h3 className="font-semibold text-foreground">
                     No hidden limits
                   </h3>
-
                   <p className="text-sm text-muted-foreground">
                     Your savings act as collateral. The more you save,
                     the more you can borrow.
@@ -81,20 +75,15 @@ export function LoanEligibility() {
                 </div>
               </li>
 
-              {/* Benefit 2 */}
               <li className="flex gap-4">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                  <Calculator
-                    className="size-5"
-                    aria-hidden="true"
-                  />
+                  <Calculator className="size-5" aria-hidden="true" />
                 </span>
 
                 <div>
                   <h3 className="font-semibold text-foreground">
                     Instant pre-approval estimate
                   </h3>
-
                   <p className="text-sm text-muted-foreground">
                     Use this tool to plan your loan before visiting
                     the branch. Final approval is subject to CIB
@@ -102,19 +91,52 @@ export function LoanEligibility() {
                   </p>
                 </div>
               </li>
-
             </ul>
           </div>
 
-          {/* Part 3: Interactive calculator will be added next */}
+          {/* Part 3: Interactive calculator */}
           <div className="rounded-3xl border bg-secondary/30 p-6 shadow-sm md:p-8">
             <h3 className="text-xl font-bold">
               Eligibility Calculator
             </h3>
 
-            <p className="mt-3 text-sm text-muted-foreground">
-              Calculator controls will be added in the next part.
-            </p>
+            <div className="mt-6 flex flex-col gap-6">
+
+              {/* Total Savings slider */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="savings-slider"
+                    className="text-sm font-medium"
+                  >
+                    Total Savings
+                  </label>
+
+                  <span className="font-semibold tabular-nums text-primary">
+                    {formatNPR(savings)}
+                  </span>
+                </div>
+
+                <input
+                  id="savings-slider"
+                  type="range"
+                  min={10_000}
+                  max={2_000_000}
+                  step={10_000}
+                  value={savings}
+                  onChange={(e) =>
+                    setSavings(Number(e.target.value))
+                  }
+                  className="range-input mt-3"
+                  style={
+                    {
+                      '--fill': `${(savings / 2_000_000) * 100}%`,
+                    } as React.CSSProperties
+                  }
+                />
+              </div>
+
+            </div>
           </div>
 
         </div>
