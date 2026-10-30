@@ -65,7 +65,7 @@ const schemes: Scheme[] = [
   },
 ];
 
-export default function GovernmentSchemes() {
+export function GovernmentSchemes() {
   return (
     <section
       id="schemes"
