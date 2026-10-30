@@ -13,13 +13,12 @@ import { formatNPR } from '@/frontend/lib/format'
 import { cn } from '@/frontend/lib/utils'
 
 export function LoanEligibility() {
-  // Part 1: Manage calculator state
+  // Part 1: Calculator state
   const [savings, setSavings] = useState(100_000)
   const [shares, setShares] = useState(25_000)
   const [existingLoan, setExistingLoan] = useState(0)
 
-  // Calculate the available loan eligibility
-  // Max Loan = Savings + (Shares × 3) - Existing Loans
+  // Calculate available loan eligibility
   const eligibility = useMemo(() => {
     const maxLimit = savings + shares * 3
     const available = Math.max(0, maxLimit - existingLoan)
@@ -38,9 +37,76 @@ export function LoanEligibility() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-12 lg:grid-cols-2">
 
-          {/* Part 2: Left content will be added here */}
+          {/* Part 2: Introduction and member benefits */}
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary">
+              <ShieldCheck
+                className="size-3.5"
+                aria-hidden="true"
+              />
+              Member Exclusive
+            </span>
 
-          {/* Part 3: Interactive calculator will be added here */}
+            <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight md:text-4xl">
+              How much can you borrow?
+            </h2>
+
+            <p className="mt-3 text-muted-foreground">
+              Your borrowing limit is directly tied to your savings and
+              share capital. As a member, you can borrow up to{' '}
+              <strong>3x your share capital</strong> plus your accumulated
+              savings, minus any active loans.
+            </p>
+
+            <ul className="mt-8 flex flex-col gap-5">
+
+              {/* Benefit 1 */}
+              <li className="flex gap-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                  <Wallet
+                    className="size-5"
+                    aria-hidden="true"
+                  />
+                </span>
+
+                <div>
+                  <h3 className="font-semibold text-foreground">
+                    No hidden limits
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground">
+                    Your savings act as collateral. The more you save,
+                    the more you can borrow.
+                  </p>
+                </div>
+              </li>
+
+              {/* Benefit 2 */}
+              <li className="flex gap-4">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                  <Calculator
+                    className="size-5"
+                    aria-hidden="true"
+                  />
+                </span>
+
+                <div>
+                  <h3 className="font-semibold text-foreground">
+                    Instant pre-approval estimate
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground">
+                    Use this tool to plan your loan before visiting
+                    the branch. Final approval is subject to CIB
+                    check and income verification.
+                  </p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          {/* Part 3: Interactive calculator will be added next */}
           <div className="rounded-3xl border bg-secondary/30 p-6 shadow-sm md:p-8">
             <h3 className="text-xl font-bold">
               Eligibility Calculator
@@ -56,4 +122,3 @@ export function LoanEligibility() {
     </section>
   )
 }
-
