@@ -85,9 +85,9 @@ export const navMenus: NavMenu[] = [
         icon: HandCoins,
       },
       {
-        label: 'Government Schemes',
-        desc: 'Subsidized loans via ministries',
-        href: '#schemes',
+        label: 'Loan Eligibility',
+        desc: 'Check how much you can borrow',
+        href: '#eligibility',
         icon: Handshake,
       },
     ],
@@ -96,9 +96,9 @@ export const navMenus: NavMenu[] = [
     label: 'Member Services',
     items: [
       {
-        label: 'Member Benefits',
-        desc: 'Welfare fund, medical, scholarship',
-        href: '#benefits',
+        label: 'Welfare Program',
+        desc: 'Relief fund, medical & death benefits',
+        href: '/welfare',
         icon: Heart,
       },
       {
