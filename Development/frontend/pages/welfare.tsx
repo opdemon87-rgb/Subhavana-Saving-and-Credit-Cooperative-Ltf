@@ -78,7 +78,46 @@ export default function WelfarePage() {
         </div>
       </section>
 
-      {/* Benefits, Eligibility and Important Notes will be added in the next parts */}
+      {/* Benefits Grid */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              What you&apos;re covered for
+            </h2>
+
+            <p className="mt-3 text-muted-foreground">
+              Every active member is automatically enrolled in the Welfare Fund, provided
+              eligibility criteria are met.
+            </p>
+          </div>
+
+          <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {benefits.map(({ title, amount, description, icon: Icon }) => (
+              <li
+                key={title}
+                className="flex flex-col rounded-3xl border bg-background p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-accent text-primary">
+                  <Icon className="size-6" aria-hidden="true" />
+                </span>
+
+                <h3 className="mt-5 text-lg font-semibold">{title}</h3>
+
+                <p className="mt-1 text-2xl font-bold tabular-nums text-primary">
+                  {amount}
+                </p>
+
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Eligibility and Important Notes will be added in the next parts */}
     </div>
   )
 }
