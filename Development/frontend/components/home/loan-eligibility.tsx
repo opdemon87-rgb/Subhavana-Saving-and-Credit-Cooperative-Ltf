@@ -91,7 +91,7 @@ export function LoanEligibility() {
             </ul>
           </div>
 
-          {/* Part 3 and 4: Interactive calculator */}
+          {/* Part 3, 4 and 5: Interactive calculator */}
           <div className="rounded-3xl border bg-secondary/30 p-6 shadow-sm md:p-8">
             <h3 className="text-xl font-bold">
               Eligibility Calculator
@@ -133,7 +133,7 @@ export function LoanEligibility() {
                 />
               </div>
 
-              {/* Part 4: Share Capital */}
+              {/* Share Capital */}
               <div>
                 <div className="flex items-center justify-between">
                   <label
@@ -167,7 +167,7 @@ export function LoanEligibility() {
                 />
               </div>
 
-              {/* Part 4: Existing Loans */}
+              {/* Existing Loans */}
               <div className="border-t pt-4">
                 <div className="flex items-center justify-between">
                   <label
@@ -202,6 +202,35 @@ export function LoanEligibility() {
               </div>
 
             </div>
+
+            {/* Part 5: Available loan limit */}
+            <div className="mt-8 rounded-2xl bg-primary p-5 text-primary-foreground">
+              <p className="text-sm text-emerald-100">
+                Available Loan Limit
+              </p>
+
+              <p className="mt-1 text-3xl font-bold tabular-nums text-gold">
+                {formatNPR(eligibility.available)}
+              </p>
+
+              <p className="mt-3 text-xs text-emerald-100">
+                Based on a maximum limit of{' '}
+                {formatNPR(eligibility.maxLimit)}.
+              </p>
+            </div>
+
+            {/* Loan application button */}
+            <a
+              href="/apply-loan"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-semibold text-gold-foreground transition-colors hover:bg-amber-400"
+            >
+              Start Loan Application
+
+              <ArrowRight
+                className="size-4"
+                aria-hidden="true"
+              />
+            </a>
           </div>
 
         </div>
