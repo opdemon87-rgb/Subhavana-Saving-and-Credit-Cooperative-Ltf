@@ -52,9 +52,47 @@ export function FinancialCalendar() {
           </div>
         </div>
 
-        {/* Event Cards will be added in Part 2 */}
+        {/* Event Cards */}
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {events.map((e) => (
+            <div
+              key={e.title}
+              className="flex flex-col rounded-2xl border bg-background p-6 shadow-sm"
+            >
+              {/* Date and Status */}
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-2 text-sm font-bold text-primary">
+                  <Clock className="size-4" aria-hidden="true" />
+                  {e.date}
+                </span>
+
+                <span
+                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${e.color}`}
+                >
+                  {e.status}
+                </span>
+              </div>
+
+              {/* Event Icon */}
+              <span className="mt-4 flex size-10 items-center justify-center rounded-xl bg-secondary text-foreground">
+                <e.icon className="size-5" aria-hidden="true" />
+              </span>
+
+              {/* Event Details */}
+              <h3 className="mt-4 font-semibold text-foreground">
+                {e.title}
+              </h3>
+
+              <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                {e.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
 }
+
+
 export default FinancialCalendar
