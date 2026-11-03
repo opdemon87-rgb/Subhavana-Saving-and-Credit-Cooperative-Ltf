@@ -57,3 +57,4 @@ export function FinancialCalendar() {
     </section>
   )
 }
+export default FinancialCalendar
