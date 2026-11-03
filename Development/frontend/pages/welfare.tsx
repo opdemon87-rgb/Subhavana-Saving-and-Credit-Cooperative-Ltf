@@ -143,7 +143,38 @@ export default function WelfarePage() {
               </ul>
             </div>
 
-            {/* Important Notes will be added in Part 4 */}
+            {/* Important Notes */}
+            <div className="rounded-3xl border bg-background p-6 shadow-sm md:p-8">
+              <div className="flex items-center gap-3">
+                <AlertCircle className="size-8 text-amber-600" aria-hidden="true" />
+                <h3 className="text-lg font-semibold">Important Notes</h3>
+              </div>
+
+              <ul className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+                <li>
+                  Benefits are subject to available Welfare Fund balance and Board approval.
+                </li>
+                <li>
+                  Claims must be submitted within 6 months of the incident with supporting
+                  documents (death certificate, medical reports, etc.).
+                </li>
+                <li>
+                  Members with overdue loans or irregular savings are ineligible for
+                  assistance until their account is regularized.
+                </li>
+                <li>
+                  The Welfare Fund is separate from your savings and share capital — it is a
+                  collective pool managed by the cooperative.
+                </li>
+              </ul>
+
+              <Link
+                href="/register"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-emerald-900"
+              >
+                Become a Member
+              </Link>
+            </div>
           </div>
         </div>
       </section>
