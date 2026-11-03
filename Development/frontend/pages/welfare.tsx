@@ -117,7 +117,36 @@ export default function WelfarePage() {
         </div>
       </section>
 
-      {/* Eligibility and Important Notes will be added in the next parts */}
+      {/* Eligibility */}
+      <section className="bg-secondary py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Who is eligible?
+              </h2>
+
+              <p className="mt-3 text-muted-foreground">
+                Welfare benefits are available to members who maintain active participation
+                in the cooperative. The following criteria apply:
+              </p>
+
+              <ul className="mt-6 flex flex-col gap-3">
+                {eligibility.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                      <ShieldCheck className="size-3" aria-hidden="true" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Important Notes will be added in Part 4 */}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
