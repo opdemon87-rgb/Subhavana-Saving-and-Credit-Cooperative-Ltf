@@ -1,0 +1,1 @@
+export { default } from '@/frontend/components/home/financial-calendar'
