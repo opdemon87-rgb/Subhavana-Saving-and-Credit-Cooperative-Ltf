@@ -139,7 +139,7 @@ export const navMenus: NavMenu[] = [
       {
         label: 'Financial Calendar',
         desc: 'AGM, quarter close, dividend',
-        href: '#calendar',
+        href: '/calendar',
         icon: Calendar,
       },
       {
