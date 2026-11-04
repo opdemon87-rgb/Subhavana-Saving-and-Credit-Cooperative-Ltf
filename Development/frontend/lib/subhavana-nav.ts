@@ -130,12 +130,7 @@ export const navMenus: NavMenu[] = [
         href: '#emi',
         icon: Wallet,
       },
-      {
-        label: 'Savings Return Calculator',
-        desc: 'See FD maturity value',
-        href: '#savings-calculator',
-        icon: CreditCard,
-      },
+      
       {
         label: 'Financial Calendar',
         desc: 'AGM, quarter close, dividend',
