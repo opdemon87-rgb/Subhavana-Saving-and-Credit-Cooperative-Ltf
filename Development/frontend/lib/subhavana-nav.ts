@@ -19,6 +19,7 @@ import {
   Sprout,
   Users,
   Wallet,
+  Target,
 } from 'lucide-react'
 
 export type NavItem = {
@@ -136,6 +137,12 @@ export const navMenus: NavMenu[] = [
         desc: 'AGM, quarter close, dividend',
         href: '/calendar',
         icon: Calendar,
+      },
+      {
+        label: 'Goal Planner',
+        desc: 'Plan your monthly savings',
+        href: '/goal-calculator', 
+        icon: Target,             
       },
       {
         label: 'KYC Requirements',
