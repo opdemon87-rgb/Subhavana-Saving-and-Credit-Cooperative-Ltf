@@ -78,7 +78,68 @@ export default function GoalCalculatorPage() {
               </ul>
             </div>
 
-            {/* Calculator will be added in Part 3 */}
+            {/* Right: The Calculator */}
+            <div className="rounded-3xl border bg-secondary/30 p-6 shadow-sm md:p-8">
+              <h3 className="text-xl font-bold">Goal Planner</h3>
+
+              <div className="mt-6 flex flex-col gap-6">
+
+                {/* Target Amount */}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label className="text-sm font-medium">
+                      Target Amount
+                    </label>
+
+                    <span className="font-semibold tabular-nums text-primary">
+                      {formatNPR(target)}
+                    </span>
+                  </div>
+
+                  <input
+                    type="range"
+                    min={50_000}
+                    max={5_000_000}
+                    step={50_000}
+                    value={target}
+                    onChange={(e) => setTarget(Number(e.target.value))}
+                    className="range-input mt-3"
+                    style={{
+                      '--fill': `${(target / 5_000_000) * 100}%`,
+                    } as React.CSSProperties}
+                  />
+                </div>
+
+                {/* Timeframe */}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label className="text-sm font-medium">
+                      Timeframe (Years)
+                    </label>
+
+                    <span className="font-semibold tabular-nums text-primary">
+                      {years} Years
+                    </span>
+                  </div>
+
+                  <input
+                    type="range"
+                    min={1}
+                    max={10}
+                    step={1}
+                    value={years}
+                    onChange={(e) => setYears(Number(e.target.value))}
+                    className="range-input mt-3"
+                    style={{
+                      '--fill': `${(years / 10) * 100}%`,
+                    } as React.CSSProperties}
+                  />
+                </div>
+
+              </div>
+
+              {/* Monthly Deposit Result and Application Button will be added in Part 4 */}
+            </div>
           </div>
         </div>
       </section>
