@@ -16,6 +16,11 @@ const services = [
     desc: 'Working capital and expansion loans for small and medium enterprises with quick approval.',
     icon: Briefcase,
   },
+  {
+    title: 'Digital App Banking',
+    desc: 'Check balances, transfer funds, pay bills and scan QR codes anytime from your phone.',
+    icon: Smartphone,
+  },
 ]
 
 export function Services() {
