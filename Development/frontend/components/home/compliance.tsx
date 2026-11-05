@@ -17,9 +17,48 @@ export function Compliance() {
           </p>
         </div>
 
-        {/* Compliance Cards - To be added in Part 2 */}
+        {/* Compliance Cards */}
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Compliance cards will go here */}
+          {[
+            {
+              title: 'DCO Registered',
+              desc: 'Dept. of Cooperatives Reg No. DCO-2081/2077',
+              icon: Landmark,
+            },
+            {
+              title: 'DCGF Guaranteed',
+              desc: 'Deposits insured up to Rs. 5 Lakh by the Deposit & Credit Guarantee Fund',
+              icon: Lock,
+            },
+            {
+              title: 'NEFSCUN Member',
+              desc: 'Affiliated with the National Federation of Savings & Credit Co-ops',
+              icon: FileBadge,
+            },
+            {
+              title: 'Audited Annually',
+              desc: 'Independent audits presented at every AGM',
+              icon: ShieldCheck,
+            },
+          ].map((item) => (
+            <li
+              key={item.title}
+              className="flex flex-col items-center rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
+            >
+              <item.icon
+                className="size-8 text-gold"
+                aria-hidden="true"
+              />
+
+              <h3 className="mt-4 font-semibold text-white">
+                {item.title}
+              </h3>
+
+              <p className="mt-2 text-xs text-emerald-100">
+                {item.desc}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
