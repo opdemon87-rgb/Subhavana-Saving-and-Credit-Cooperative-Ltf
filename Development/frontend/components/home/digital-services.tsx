@@ -57,7 +57,7 @@ function PhoneMockup() {
       />
 
       <div className="overflow-hidden rounded-[2.1rem] bg-secondary">
-        {/* Phone Header */}
+        {/* Header */}
         <div className="bg-primary px-5 pb-6 pt-10 text-primary-foreground">
           <div className="flex items-center justify-between">
             <div>
@@ -95,11 +95,46 @@ function PhoneMockup() {
                 <span className="flex size-10 items-center justify-center rounded-xl bg-background text-primary shadow-sm">
                   <Icon className="size-4" aria-hidden="true" />
                 </span>
-                <span className="text-[9px] font-medium text-foreground">
-                  {l}
-                </span>
+                <span className="text-[9px] font-medium text-foreground">{l}</span>
               </div>
             ))}
+          </div>
+
+          {/* Recent Activity */}
+          <p className="mt-5 text-[11px] font-semibold text-foreground">
+            Recent Activity
+          </p>
+
+          <ul className="mt-2 flex flex-col gap-2">
+            {[
+              { n: 'Monthly savings deposit', a: '+ Rs. 2,000', pos: true },
+              { n: 'Bhatbhateni Store', a: '- Rs. 1,450', pos: false },
+              { n: 'Remittance from Qatar', a: '+ Rs. 45,000', pos: true },
+            ].map((t) => (
+              <li
+                key={t.n}
+                className="flex items-center justify-between rounded-xl bg-background px-3 py-2.5"
+              >
+                <span className="text-[10px] font-medium text-foreground">
+                  {t.n}
+                </span>
+                <span
+                  className={`text-[10px] font-semibold ${
+                    t.pos ? 'text-primary' : 'text-foreground'
+                  }`}
+                >
+                  {t.a}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          {/* SMS Hint */}
+          <div className="mt-4 rounded-xl border border-dashed border-primary/30 bg-accent/60 px-3 py-2.5 text-[10px] text-primary">
+            <span className="font-semibold">Tip:</span> Text{' '}
+            <span className="font-mono font-bold">SBAL</span> to{' '}
+            <span className="font-mono font-bold">4567</span> for instant balance —
+            no internet required.
           </div>
         </div>
       </div>
