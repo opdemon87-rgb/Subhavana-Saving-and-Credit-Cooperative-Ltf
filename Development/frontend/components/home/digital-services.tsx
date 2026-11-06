@@ -67,26 +67,41 @@ function PhoneMockup() {
                 Member #SB-0142
               </p>
             </div>
-
             <Bell className="size-4" aria-hidden="true" />
           </div>
 
-          {/* Savings Balance */}
           <div className="mt-5 rounded-2xl bg-white/10 p-4">
             <p className="flex items-center gap-1.5 text-[10px] text-emerald-100">
-              Savings Balance
-              <Eye className="size-3" aria-hidden="true" />
+              Savings Balance <Eye className="size-3" aria-hidden="true" />
             </p>
-
             <p className="mt-1 text-xl font-bold">Rs. 82,350</p>
-
             <p className="mt-1 text-[10px] text-gold">
               + Rs. 1,240 interest this quarter
             </p>
           </div>
         </div>
 
-        {/* Phone Body - To be added in Part 3 */}
+        {/* Phone Body */}
+        <div className="-mt-3 rounded-t-2xl bg-secondary px-4 pb-5 pt-4">
+          {/* Quick Actions */}
+          <div className="grid grid-cols-4 gap-2">
+            {[
+              { l: 'SMS', i: MessageSquareText },
+              { l: 'Statement', i: FileText },
+              { l: 'Loan EMI', i: ArrowLeftRight },
+              { l: 'Remit', i: Send },
+            ].map(({ l, i: Icon }) => (
+              <div key={l} className="flex flex-col items-center gap-1">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-background text-primary shadow-sm">
+                  <Icon className="size-4" aria-hidden="true" />
+                </span>
+                <span className="text-[9px] font-medium text-foreground">
+                  {l}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
