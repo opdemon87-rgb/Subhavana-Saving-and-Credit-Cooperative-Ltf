@@ -57,7 +57,6 @@ function PhoneMockup() {
       />
 
       <div className="overflow-hidden rounded-[2.1rem] bg-secondary">
-        {/* Header */}
         <div className="bg-primary px-5 pb-6 pt-10 text-primary-foreground">
           <div className="flex items-center justify-between">
             <div>
@@ -81,9 +80,7 @@ function PhoneMockup() {
           </div>
         </div>
 
-        {/* Phone Body */}
         <div className="-mt-3 rounded-t-2xl bg-secondary px-4 pb-5 pt-4">
-          {/* Quick Actions */}
           <div className="grid grid-cols-4 gap-2">
             {[
               { l: 'SMS', i: MessageSquareText },
@@ -100,7 +97,6 @@ function PhoneMockup() {
             ))}
           </div>
 
-          {/* Recent Activity */}
           <p className="mt-5 text-[11px] font-semibold text-foreground">
             Recent Activity
           </p>
@@ -115,22 +111,20 @@ function PhoneMockup() {
                 key={t.n}
                 className="flex items-center justify-between rounded-xl bg-background px-3 py-2.5"
               >
-                <span className="text-[10px] font-medium text-foreground">
-                  {t.n}
-                </span>
-                <span
-                  className={`text-[10px] font-semibold ${
-                    t.pos ? 'text-primary' : 'text-foreground'
-                  }`}
-                >
+                <span className="text-[10px] font-medium text-foreground">{t.n}</span>
+                <span className={`text-[10px] font-semibold ${t.pos ? 'text-primary' : 'text-foreground'}`}>
                   {t.a}
                 </span>
               </li>
             ))}
           </ul>
 
-          {/* SMS Hint */}
-          
+          <div className="mt-4 rounded-xl border border-dashed border-primary/30 bg-accent/60 px-3 py-2.5 text-[10px] text-primary">
+            <span className="font-semibold">Tip:</span> Text{' '}
+            <span className="font-mono font-bold">SBAL</span> to{' '}
+            <span className="font-mono font-bold">4567</span> for instant balance —
+            no internet required.
+          </div>
         </div>
       </div>
     </div>
@@ -145,6 +139,7 @@ export function DigitalServices() {
       aria-labelledby="digital-heading"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 lg:grid-cols-2">
+        {/* Phone */}
         <div className="order-2 lg:order-1">
           <div
             role="img"
@@ -161,7 +156,41 @@ export function DigitalServices() {
           </div>
         </div>
 
-        {/* Digital Services Content - To be added */}
+        {/* Digital Services Introduction */}
+        <div className="order-1 lg:order-2">
+          <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary">
+            <Smartphone className="size-3.5" aria-hidden="true" />
+            Member Digital Services
+          </span>
+
+          <h2
+            id="digital-heading"
+            className="mt-4 text-balance text-3xl font-bold tracking-tight md:text-4xl"
+          >
+            Simple digital banking — no smartphone needed
+          </h2>
+
+          <p className="mt-3 max-w-lg text-muted-foreground">
+            We keep it easy. Check your balance by SMS, view statements on our member
+            portal, and collect remittances at any branch. Free for all 525 members.
+          </p>
+
+          {/* Feature List */}
+          <ul className="mt-8 flex flex-col gap-5">
+            {features.map(({ title, desc, icon: Icon }) => (
+              <li key={title} className="flex gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                  <Icon className="size-5" aria-hidden="true" />
+                </span>
+
+                <div>
+                  <h3 className="font-semibold text-foreground">{title}</h3>
+                  <p className="text-sm text-muted-foreground">{desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )
