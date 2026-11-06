@@ -57,7 +57,36 @@ function PhoneMockup() {
       />
 
       <div className="overflow-hidden rounded-[2.1rem] bg-secondary">
-        {/* Phone content will be added in the next parts */}
+        {/* Phone Header */}
+        <div className="bg-primary px-5 pb-6 pt-10 text-primary-foreground">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[10px] text-emerald-200">Namaste,</p>
+              <p className="text-sm font-semibold">Sunita Maharjan</p>
+              <p className="mt-0.5 text-[9px] text-emerald-300">
+                Member #SB-0142
+              </p>
+            </div>
+
+            <Bell className="size-4" aria-hidden="true" />
+          </div>
+
+          {/* Savings Balance */}
+          <div className="mt-5 rounded-2xl bg-white/10 p-4">
+            <p className="flex items-center gap-1.5 text-[10px] text-emerald-100">
+              Savings Balance
+              <Eye className="size-3" aria-hidden="true" />
+            </p>
+
+            <p className="mt-1 text-xl font-bold">Rs. 82,350</p>
+
+            <p className="mt-1 text-[10px] text-gold">
+              + Rs. 1,240 interest this quarter
+            </p>
+          </div>
+        </div>
+
+        {/* Phone Body - To be added in Part 3 */}
       </div>
     </div>
   )
@@ -71,7 +100,6 @@ export function DigitalServices() {
       aria-labelledby="digital-heading"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 lg:grid-cols-2">
-        {/* Phone */}
         <div className="order-2 lg:order-1">
           <div
             role="img"
