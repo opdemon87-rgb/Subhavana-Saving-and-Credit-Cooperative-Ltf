@@ -130,12 +130,7 @@ function PhoneMockup() {
           </ul>
 
           {/* SMS Hint */}
-          <div className="mt-4 rounded-xl border border-dashed border-primary/30 bg-accent/60 px-3 py-2.5 text-[10px] text-primary">
-            <span className="font-semibold">Tip:</span> Text{' '}
-            <span className="font-mono font-bold">SBAL</span> to{' '}
-            <span className="font-mono font-bold">4567</span> for instant balance —
-            no internet required.
-          </div>
+          
         </div>
       </div>
     </div>
