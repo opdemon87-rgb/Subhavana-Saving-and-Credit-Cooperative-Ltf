@@ -79,7 +79,31 @@ export function Testimonials() {
                 <p className="text-[15px]">&ldquo;{t.quote}&rdquo;</p>
               </blockquote>
 
-              {/* Author footer and product tag will be added in Part 3 */}
+              {/* Author footer */}
+              <div className="mt-6 flex items-center gap-3 border-t border-border/60 pt-5">
+                <span
+                  className="flex size-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-sm font-bold text-primary-foreground shadow-sm ring-2 ring-background"
+                  aria-hidden="true"
+                >
+                  {initials(t.name)}
+                </span>
+
+                <div className="min-w-0">
+                  <p className="truncate font-semibold leading-tight">
+                    {t.name}
+                  </p>
+                  <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                    {t.role} · {t.location}
+                  </p>
+                </div>
+              </div>
+
+              {/* Product tag */}
+              <div className="mt-4">
+                <span className="inline-flex items-center rounded-full bg-accent/80 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-primary ring-1 ring-primary/10">
+                  {t.product}
+                </span>
+              </div>
             </li>
           ))}
         </ul>
