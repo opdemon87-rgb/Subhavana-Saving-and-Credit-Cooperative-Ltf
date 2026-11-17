@@ -40,7 +40,49 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonials cards will be added in Part 2 */}
+        {/* Cards Grid */}
+        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+          {testimonials.map((t, index) => (
+            <li
+              key={t.name}
+              className="group relative flex flex-col rounded-3xl border border-border/60 bg-background p-6 shadow-sm ring-1 ring-transparent transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:ring-primary/10"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {/* Rating + Quote icon */}
+              <div className="flex items-start justify-between">
+                <div
+                  className="flex gap-0.5"
+                  role="img"
+                  aria-label={`${t.rating} out of 5 stars`}
+                >
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star
+                      key={i}
+                      className={
+                        i < t.rating
+                          ? 'size-4 fill-gold text-gold'
+                          : 'size-4 text-slate-300'
+                      }
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+
+                <Quote
+                  className="size-9 text-accent/60 transition-colors group-hover:text-accent"
+                  aria-hidden="true"
+                />
+              </div>
+
+              {/* Quote text */}
+              <blockquote className="mt-4 flex-1 text-pretty leading-relaxed text-foreground">
+                <p className="text-[15px]">&ldquo;{t.quote}&rdquo;</p>
+              </blockquote>
+
+              {/* Author footer and product tag will be added in Part 3 */}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
