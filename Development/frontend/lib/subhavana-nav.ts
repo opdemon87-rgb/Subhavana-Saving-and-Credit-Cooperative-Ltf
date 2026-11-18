@@ -116,6 +116,12 @@ export const navMenus: NavMenu[] = [
         href: '#notices',
         icon: FileText,
       },
+      {
+       label: 'Member Support',
+      desc: 'Submit a request or track a ticket',
+      href: '/member-support',
+      icon: Headset,
+},
     ],
   },
   {
