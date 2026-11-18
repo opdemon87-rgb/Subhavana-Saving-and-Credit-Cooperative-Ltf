@@ -19,6 +19,7 @@ model Member {
   address      String?
   memberSince  DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  supportRequests SupportRequest[]
 
   // Relations — one member can have many of each
   applications LoanApplication[]
