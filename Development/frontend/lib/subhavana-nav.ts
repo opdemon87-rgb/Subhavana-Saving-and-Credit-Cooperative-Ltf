@@ -20,6 +20,7 @@ import {
   Users,
   Wallet,
   Target,
+  Headset,
 } from 'lucide-react'
 
 export type NavItem = {
@@ -102,12 +103,7 @@ export const navMenus: NavMenu[] = [
         href: '/welfare',
         icon: Heart,
       },
-      {
-        label: 'Digital Services',
-        desc: 'SMS banking, portal, statements',
-        href: '#digital',
-        icon: MessageSquareText,
-      },
+      
       {
         label: 'Downloads',
         desc: 'Forms, reports, policies',
