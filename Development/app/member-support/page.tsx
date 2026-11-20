@@ -140,6 +140,7 @@ export default function MemberSupportPage() {
             ticket number to check its status.
           </p>
 
+          
         </div>
 
         {/* Support Forms */}
@@ -203,7 +204,7 @@ export default function MemberSupportPage() {
                     name="email"
                     type="email"
                     className={`mt-1.5 ${inputClass}`}
-                    placeholder="123@gmail.com"
+                    placeholder="demo@gmail.com"
                   />
                 </div>
               </fieldset>
@@ -284,13 +285,47 @@ export default function MemberSupportPage() {
             )}
           </section>
 
-          {/* Ticket Tracking will be completed in Part 4 */}
+          {/* Track Existing Ticket */}
           <section className="rounded-2xl border bg-background p-6 shadow-sm">
             <h2 className="text-xl font-semibold">Track a ticket</h2>
 
             <p className="mt-2 text-sm text-muted-foreground">
-              Ticket tracking will be available in the next part.
+              Enter the ticket number shown after submitting your request.
             </p>
+
+            <form onSubmit={trackTicket} className="mt-5 flex flex-col gap-4">
+              {trackError && (
+                <p role="alert" className="text-sm text-red-700">
+                  {trackError}
+                </p>
+              )}
+
+              <div>
+                <label htmlFor="ticketNo" className="text-sm font-medium">
+                  Ticket number
+                </label>
+
+                <input
+                  id="ticketNo"
+                  value={ticketNo}
+                  onChange={(event) => setTicketNo(event.target.value)}
+                  required
+                  className={`mt-1.5 ${inputClass}`}
+                  placeholder="Paste your ticket number"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={tracking}
+                className="rounded-lg border border-primary px-5 py-3 text-sm font-semibold text-primary disabled:opacity-60"
+              >
+                {tracking ? 'Checking…' : 'Check status'}
+              </button>
+            </form>
+
+            {/* Ticket Tracking Result */}
+            {foundTicket && <TicketCard ticket={foundTicket} />}
           </section>
 
         </div>
