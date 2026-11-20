@@ -18,7 +18,6 @@ const categories = [
   ['ACCOUNT', 'Account'],
   ['SAVINGS', 'Savings'],
   ['LOAN', 'Loan'],
-  ['DIGITAL_SERVICE', 'Digital services'],
   ['BRANCH', 'Branch service'],
   ['OTHER', 'Other'],
 ] as const
@@ -126,6 +125,7 @@ export default function MemberSupportPage() {
       <SiteHeader />
 
       <main className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+        {/* Page Header */}
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">
             Member Services
@@ -136,17 +136,164 @@ export default function MemberSupportPage() {
           </h1>
 
           <p className="mt-3 text-muted-foreground">
-            Send a question or concern to our demo support team, then use your
+            Send a question or concern to our support team, then use your
             ticket number to check its status.
           </p>
 
-          <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900">
-            Demo only: use fictional contact details. Do not enter real financial
-            or identity information.
-          </p>
         </div>
 
-        {/* Support forms will be added in Part 3 and Part 4. */}
+        {/* Support Forms */}
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+
+          {/* Submit Support Request */}
+          <section className="rounded-2xl border bg-background p-6 shadow-sm">
+            <h2 className="text-xl font-semibold">Submit a request</h2>
+
+            <form onSubmit={submitRequest} className="mt-5 flex flex-col gap-4">
+              {submitError && (
+                <p role="alert" className="text-sm text-red-700">
+                  {submitError}
+                </p>
+              )}
+
+              
+
+              {/* Member Contact Details */}
+              <fieldset
+                disabled={anonymous}
+                className="grid gap-4 sm:grid-cols-2"
+              >
+                <div>
+                  <label htmlFor="fullName" className="text-sm font-medium">
+                    Name
+                  </label>
+
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    required={!anonymous}
+                    className={`mt-1.5 ${inputClass}`}
+                    placeholder="Ram Bahadur Shrestha"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="text-sm font-medium">
+                    Mobile
+                  </label>
+
+                  <input
+                    id="phone"
+                    name="phone"
+                    required={!anonymous}
+                    inputMode="numeric"
+                    pattern="9\d{9}"
+                    className={`mt-1.5 ${inputClass}`}
+                    placeholder="98XXXXXXXX"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email <span className="text-muted-foreground">(optional)</span>
+                  </label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    className={`mt-1.5 ${inputClass}`}
+                    placeholder="123@gmail.com"
+                  />
+                </div>
+              </fieldset>
+
+              {/* Support Category */}
+              <div>
+                <label htmlFor="category" className="text-sm font-medium">
+                  Category
+                </label>
+
+                <select
+                  id="category"
+                  name="category"
+                  className={`mt-1.5 ${inputClass}`}
+                >
+                  {categories.map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Request Subject */}
+              <div>
+                <label htmlFor="subject" className="text-sm font-medium">
+                  Subject
+                </label>
+
+                <input
+                  id="subject"
+                  name="subject"
+                  required
+                  minLength={4}
+                  maxLength={160}
+                  className={`mt-1.5 ${inputClass}`}
+                  placeholder="What do you need help with?"
+                />
+              </div>
+
+              {/* Request Details */}
+              <div>
+                <label htmlFor="message" className="text-sm font-medium">
+                  Details
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  minLength={10}
+                  maxLength={2000}
+                  rows={5}
+                  className={`mt-1.5 ${inputClass}`}
+                  placeholder="Describe your question or concern."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={submitting}
+                className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground disabled:opacity-60"
+              >
+                {submitting ? 'Submitting…' : 'Submit request'}
+              </button>
+            </form>
+
+            {/* Created Ticket Confirmation */}
+            {createdTicket && (
+              <div className="mt-5">
+                <p className="text-sm font-medium text-primary">
+                  Request received. Save this ticket number to check its status:
+                </p>
+
+                <TicketCard ticket={createdTicket} />
+              </div>
+            )}
+          </section>
+
+          {/* Ticket Tracking will be completed in Part 4 */}
+          <section className="rounded-2xl border bg-background p-6 shadow-sm">
+            <h2 className="text-xl font-semibold">Track a ticket</h2>
+
+            <p className="mt-2 text-sm text-muted-foreground">
+              Ticket tracking will be available in the next part.
+            </p>
+          </section>
+
+        </div>
       </main>
 
       <SiteFooter />
