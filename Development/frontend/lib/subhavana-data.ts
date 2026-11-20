@@ -279,7 +279,7 @@ export const branches: Branch[] = [
   },
 ]
 
-// ---------- Compatibility re-exports for existing components ----------
+
 
 export const news = newsAndNotices
 export const notices = newsAndNotices
