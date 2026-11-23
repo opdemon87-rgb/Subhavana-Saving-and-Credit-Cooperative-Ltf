@@ -1,6 +1,6 @@
 
-import { ArrowRight, Download, FileText } from 'lucide-react'
-import { notices } from '@/lib/site-data'
+import { ArrowRight, Download, FileText, Plus } from 'lucide-react'
+import { faqs, notices } from '@/lib/site-data'
 
 export function Notices() {
   return (
@@ -90,18 +90,39 @@ export function Notices() {
             </ul>
           </div>
 
-          {/* FAQ will be added in Part 2 */}
+          {/* Frequently Asked Questions */}
           <div
             id="faq"
             className="scroll-mt-24 rounded-3xl border bg-background p-4 md:p-6"
           >
-            <h3 className="text-lg font-semibold">
+            <h3 className="px-2 text-lg font-semibold">
               Frequently Asked Questions
             </h3>
 
-            <p className="mt-4 text-sm text-muted-foreground">
-              Frequently asked questions will appear here.
-            </p>
+            <div className="mt-3 flex flex-col gap-2">
+              {faqs.map((f, i) => (
+                <details
+                  key={f.q}
+                  name="faq"
+                  open={i === 0}
+                  className="group rounded-2xl border bg-background transition-colors open:border-primary/30 open:bg-accent/50"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-sm font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+                    {f.q}
+
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-secondary text-primary transition-transform group-open:rotate-45 group-open:bg-primary group-open:text-primary-foreground">
+                      <Plus className="size-4" aria-hidden="true" />
+                    </span>
+                  </summary>
+
+                  <p className="px-4 pb-4 text-sm leading-relaxed text-muted-foreground">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+
+            {/* Contact Information will be completed in Part 3 */}
           </div>
         </div>
       </div>
