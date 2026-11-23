@@ -1,94 +1,186 @@
-import { ArrowRight, Download, FileText, Plus } from 'lucide-react'
-import { faqs, notices } from '@/lib/site-data'
 
-export function Notices() {
+'use client'
+
+import { useState } from 'react'
+import { ArrowRight, CalendarDays, Eye } from 'lucide-react'
+import { gallery, news } from '@/lib/site-data'
+import { cn } from '@/lib/utils'
+import { MediaFrame } from './media-frame'
+
+export function LatestUpdates() {
+  const [showAllNews, setShowAllNews] = useState(false)
+  const [showAllGallery, setShowAllGallery] = useState(false)
+  const [selectedImage, setSelectedImage] = useState<
+    (typeof gallery)[number] | null
+  >(null)
+
+  const visibleNews = showAllNews ? news : news.slice(0, 3)
+  const visibleGallery = showAllGallery ? gallery : gallery.slice(0, 5)
+
   return (
-    <section id="notices" className="scroll-mt-16 bg-secondary py-16 md:py-24" aria-labelledby="resources-heading">
+    <section
+      id="news"
+      className="scroll-mt-16 bg-secondary py-16 md:py-24"
+      aria-labelledby="news-heading"
+    >
       <div className="mx-auto max-w-7xl px-4">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Member Resources</p>
-          <h2 id="resources-heading" className="mt-2 text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            Notices & answers in one place
-          </h2>
+
+        {/* Section Header */}
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              News & Events
+            </p>
+
+            <h2
+              id="news-heading"
+              className="mt-2 text-3xl font-bold tracking-tight md:text-4xl"
+            >
+              Latest Updates
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowAllNews((current) => !current)}
+            aria-expanded={showAllNews}
+            aria-controls="news-list"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+          >
+            {showAllNews ? 'Show less' : 'All news'}
+
+            <ArrowRight
+              className={cn(
+                'size-4 transition-transform',
+                showAllNews && 'rotate-90',
+              )}
+              aria-hidden="true"
+            />
+          </button>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="flex flex-col rounded-3xl border bg-background p-4 md:p-6">
-            <div className="flex items-center justify-between gap-4 px-2">
-              <h3 className="text-lg font-semibold">Notice Board</h3>
-              <a href="#" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-                View archive <ArrowRight className="size-4" aria-hidden="true" />
-              </a>
-            </div>
-            <ul className="mt-3 divide-y">
-              {notices.map((n) => (
-                <li key={n.href}>
-                  <a
-                    href={n.href}
-                    download
-                    className="group flex items-start gap-4 rounded-xl px-2 py-4 transition-colors hover:bg-secondary"
-                  >
-                    <span className="flex size-11 shrink-0 flex-col items-center justify-center rounded-xl bg-red-50 text-red-600">
-                      <FileText className="size-4" aria-hidden="true" />
-                      <span className="text-[9px] font-bold">PDF</span>
+        {/* News Cards */}
+        <ul id="news-list" className="mt-10 grid gap-6 md:grid-cols-3">
+          {visibleNews.map((n) => (
+            <li key={n.title}>
+              <article className="group flex h-full flex-col overflow-hidden rounded-3xl border bg-background transition-shadow hover:shadow-lg">
+                <MediaFrame
+                  src={n.image}
+                  alt={n.alt}
+                  aspect="aspect-video"
+                  imgClassName="transition-transform duration-500 group-hover:scale-105"
+                />
+
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-center gap-3 text-xs">
+                    <span className="rounded-full bg-accent px-2.5 py-1 font-semibold text-primary">
+                      {n.category}
                     </span>
-                    <span className="flex-1">
-                      <span className="flex flex-wrap items-center gap-2">
-                        <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-semibold uppercase text-primary">
-                          {n.category}
-                        </span>
-                        {n.isNew && (
-                          <span className="rounded bg-gold px-1.5 py-0.5 text-[10px] font-bold uppercase text-gold-foreground">
-                            New
-                          </span>
-                        )}
-                      </span>
-                      <span className="mt-1.5 block text-sm font-medium text-foreground group-hover:text-primary">
-                        {n.title}
-                      </span>
-                      <span className="mt-1 block text-xs text-muted-foreground">
-                        <time dateTime={n.dateISO}>{n.dateBS}</time> · {n.size}
-                      </span>
+
+                    <span className="flex items-center gap-1 text-muted-foreground">
+                      <CalendarDays
+                        className="size-3.5"
+                        aria-hidden="true"
+                      />
+                      <time dateTime={n.dateISO}>{n.dateBS}</time>
                     </span>
-                    <Download
-                      className="mt-1 size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
+                  </div>
+
+                  <h3 className="mt-3 text-pretty font-semibold leading-snug transition-colors group-hover:text-primary">
+                    {n.title}
+                  </h3>
+
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {n.excerpt}
+                  </p>
+
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                    Read more
+                    <ArrowRight
+                      className="size-4 transition-transform group-hover:translate-x-1"
                       aria-hidden="true"
                     />
-                    <span className="sr-only">Download PDF</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+                  </span>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+
+        {/* Photo Gallery */}
+        <div className="mt-16">
+          <div className="flex items-end justify-between gap-4">
+            <h3 className="text-xl font-bold">Photo Gallery</h3>
+
+            <button
+              type="button"
+              onClick={() => setShowAllGallery((current) => !current)}
+              aria-expanded={showAllGallery}
+              aria-controls="gallery-list"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+            >
+              {showAllGallery ? 'Show fewer photos' : 'View albums'}
+
+              <ArrowRight
+                className={cn(
+                  'size-4 transition-transform',
+                  showAllGallery && 'rotate-90',
+                )}
+                aria-hidden="true"
+              />
+            </button>
           </div>
 
-          <div id="faq" className="scroll-mt-24 rounded-3xl border bg-background p-4 md:p-6">
-            <h3 className="px-2 text-lg font-semibold">Frequently Asked Questions</h3>
-            <div className="mt-3 flex flex-col gap-2">
-              {faqs.map((f, i) => (
-                <details
-                  key={f.q}
-                  name="faq"
-                  open={i === 0}
-                  className="group rounded-2xl border bg-background transition-colors open:border-primary/30 open:bg-accent/50"
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-sm font-semibold text-foreground [&::-webkit-details-marker]:hidden">
-                    {f.q}
-                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-secondary text-primary transition-transform group-open:rotate-45 group-open:bg-primary group-open:text-primary-foreground">
-                      <Plus className="size-4" aria-hidden="true" />
-                    </span>
-                  </summary>
-                  <p className="px-4 pb-4 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
-                </details>
-              ))}
-            </div>
-            <p className="mt-4 px-2 text-sm text-muted-foreground">
-              Still have questions? Call toll-free{' '}
-              <a href="tel:16600123456" className="font-semibold text-primary hover:underline">
-                1660-01-23456
-              </a>
-            </p>
-          </div>
+          <ul
+            id="gallery-list"
+            className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2"
+          >
+            {visibleGallery.map((g, i) => (
+              <li
+                key={g.title}
+                className={cn(
+                  'group relative',
+                  i === 0 && 'col-span-2 md:row-span-2',
+                )}
+              >
+                <figure className="h-full">
+                  <MediaFrame
+                    src={g.image}
+                    alt={g.alt}
+                    aspect={
+                      i === 0
+                        ? 'aspect-square md:aspect-auto md:h-full'
+                        : 'aspect-square'
+                    }
+                    className="rounded-2xl"
+                    emptyLabel="Photo upload pending"
+                  />
+
+                  {g.image && (
+                    <button
+                      type="button"
+                      onClick={() => setSelectedImage(g)}
+                      aria-label={`View image: ${g.title}`}
+                      className="absolute inset-0 z-10 flex items-end justify-end p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-950/75 px-3 py-2 text-xs font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                        <Eye className="size-4" aria-hidden="true" />
+                        View image
+                      </span>
+                    </button>
+                  )}
+
+                  <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 rounded-b-2xl bg-gradient-to-t from-slate-900/80 to-transparent px-3 pb-3 pt-8 text-xs font-medium text-white">
+                    {g.title}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        {/* Full-screen image viewer will be added in Part 3 */}
+
       </div>
     </section>
   )
