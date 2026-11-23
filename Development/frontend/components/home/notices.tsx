@@ -122,7 +122,7 @@ export function Notices() {
               ))}
             </div>
 
-            {/* Contact Information will be completed in Part 3 */}
+            
           </div>
         </div>
       </div>
