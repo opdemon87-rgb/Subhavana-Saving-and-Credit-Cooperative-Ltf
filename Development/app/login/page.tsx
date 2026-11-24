@@ -11,13 +11,14 @@ import {
   Mail,
   ShieldCheck,
   Smartphone,
+  Globe,
 } from 'lucide-react'
 import { apiPost, ApiError } from '@/lib/api-client'
 import { Logo } from '@/components/home/logo'
 
 const benefits = [
-  { icon: ShieldCheck, text: 'Deposits protected under DCGF up to Rs. 5 lakh' },
-  { icon: Smartphone, text: 'Mobile banking — check balance & transfer anytime' },
+  { icon: ShieldCheck, text: 'Quality and Protected Service' },
+  { icon: Globe, text: 'Official Website — check balance & transfer anytime' },
   { icon: CheckCircle2, text: 'Track loan applications and download statements' },
 ]
 
@@ -159,9 +160,7 @@ export default function LoginPage() {
             </p>
 
             <div className="mt-2 rounded-lg border border-dashed bg-secondary/50 px-3 py-2.5 text-xs text-muted-foreground">
-              <span className="font-semibold text-foreground">Demo account:</span>{' '}
-              <span className="font-mono">demo@sajhabachat.coop.np</span> /{' '}
-              <span className="font-mono">demo1234</span>
+              
             </div>
           </form>
         </div>
@@ -181,7 +180,7 @@ export default function LoginPage() {
             Your savings, loans and statements — in one place.
           </h2>
           <p className="mt-3 text-sm text-emerald-100">
-            Serving 208,000+ members across all 7 provinces since 2058 B.S.
+            Providing financial services to members since 2058 B.S.
           </p>
           <ul className="mt-10 flex flex-col gap-4">
             {benefits.map(({ icon: Icon, text }) => (
