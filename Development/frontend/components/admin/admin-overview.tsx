@@ -50,20 +50,41 @@ const overviewCards: OverviewCard[] = [
   },
 ]
 
+const activity = [
+  {
+    title: 'New member registration',
+    detail: 'Anita Karki completed registration',
+    time: '12 minutes ago',
+  },
+  {
+    title: 'Loan application submitted',
+    detail: 'Agriculture Loan · NPR 350,000',
+    time: '38 minutes ago',
+  },
+  {
+    title: 'Support ticket received',
+    detail: 'Ticket requires a response',
+    time: '1 hour ago',
+  },
+  {
+    title: 'Notice published',
+    detail: 'AGM notice added to the website',
+    time: '3 hours ago',
+  },
+]
+
 export function AdminOverview() {
   return (
     <div>
-      {/* Dashboard Header */}
+      {/* Dashboard Heading */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">
             Dashboard
           </p>
-
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-foreground">
             Overview
           </h1>
-
           <p className="mt-2 text-sm text-muted-foreground">
             Monitor member activity and items that need attention.
           </p>
@@ -108,29 +129,24 @@ export function AdminOverview() {
               <p className="mt-5 text-sm font-medium text-muted-foreground">
                 {title}
               </p>
-
               <p className="mt-1 text-3xl font-bold tabular-nums text-foreground">
                 {value}
               </p>
-
-              <p className="mt-2 text-xs text-muted-foreground">
-                {detail}
-              </p>
+              <p className="mt-2 text-xs text-muted-foreground">{detail}</p>
             </article>
           ),
         )}
       </section>
 
-      {/* Needs Attention Section */}
-      <section className="mt-6 grid gap-6">
+      {/* Needs Attention and Recent Activity */}
+      <section className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.75fr)]">
+        {/* Needs Attention */}
         <article className="rounded-2xl border border-border bg-card shadow-sm">
-          {/* Section Header */}
           <div className="flex items-center justify-between border-b border-border px-5 py-4">
             <div>
               <h2 className="font-semibold text-foreground">
                 Needs attention
               </h2>
-
               <p className="mt-1 text-xs text-muted-foreground">
                 Priority items requiring admin review
               </p>
@@ -144,7 +160,6 @@ export function AdminOverview() {
             </Link>
           </div>
 
-          {/* Priority Items */}
           <ul className="divide-y divide-border">
             {[
               ['KYC verification', '18 members awaiting review', 'Open'],
@@ -160,7 +175,6 @@ export function AdminOverview() {
                   <p className="text-sm font-semibold text-foreground">
                     {title}
                   </p>
-
                   <p className="mt-1 text-xs text-muted-foreground">
                     {detail}
                   </p>
@@ -176,9 +190,44 @@ export function AdminOverview() {
             ))}
           </ul>
         </article>
-      </section>
 
-      {/* Recent Activity will be added in Part 3 */}
+        {/* Recent Activity */}
+        <article className="rounded-2xl border border-border bg-card shadow-sm">
+          <div className="border-b border-border px-5 py-4">
+            <h2 className="font-semibold text-foreground">
+              Recent activity
+            </h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Latest preview activity
+            </p>
+          </div>
+
+          <ol className="divide-y divide-border">
+            {activity.map((item, index) => (
+              <li key={item.title} className="flex gap-3 px-5 py-4">
+                <span
+                  className="mt-1 flex size-8 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-bold text-primary"
+                  aria-hidden="true"
+                >
+                  {index + 1}
+                </span>
+
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-foreground">
+                    {item.title}
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {item.detail}
+                  </p>
+                  <p className="mt-1.5 text-[11px] text-muted-foreground">
+                    {item.time}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </article>
+      </section>
     </div>
   )
 }
