@@ -5,6 +5,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
+  Bell,
   FileText,
   Headset,
   LayoutDashboard,
@@ -72,14 +73,32 @@ export function AdminShell({ children }: { children: ReactNode }) {
         </nav>
       </aside>
 
-      {/* Main Content Area */}
+      {/* Main Layout */}
       <div className="lg:pl-64">
-        <header className="border-b border-border bg-background px-5 py-4 sm:px-8">
+        {/* Top Header */}
+        <header className="flex items-center justify-between border-b border-border bg-background px-5 py-4 sm:px-8">
           <p className="text-sm font-medium text-muted-foreground">
             Cooperative administration
           </p>
+
+          <div className="flex items-center gap-3">
+            {/* Preview Status */}
+            <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
+              Frontend preview
+            </span>
+
+            {/* Notification Button */}
+            <button
+              type="button"
+              aria-label="Notifications (preview only)"
+              className="rounded-lg border border-border bg-card p-2 text-muted-foreground hover:text-foreground"
+            >
+              <Bell aria-hidden="true" className="size-4" />
+            </button>
+          </div>
         </header>
 
+        {/* Page Content */}
         <main className="mx-auto min-h-[calc(100vh-65px)] max-w-[1600px] p-5 sm:p-8">
           {children}
         </main>
