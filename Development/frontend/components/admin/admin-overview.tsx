@@ -85,7 +85,6 @@ export function AdminOverview() {
               key={title}
               className="group rounded-2xl border border-border bg-card p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
-              {/* Card Icon and Link */}
               <div className="flex items-start justify-between">
                 <div
                   className={
@@ -106,7 +105,6 @@ export function AdminOverview() {
                 </Link>
               </div>
 
-              {/* Card Information */}
               <p className="mt-5 text-sm font-medium text-muted-foreground">
                 {title}
               </p>
@@ -123,7 +121,64 @@ export function AdminOverview() {
         )}
       </section>
 
-      {/* Additional dashboard sections will be added in Part 2 */}
+      {/* Needs Attention Section */}
+      <section className="mt-6 grid gap-6">
+        <article className="rounded-2xl border border-border bg-card shadow-sm">
+          {/* Section Header */}
+          <div className="flex items-center justify-between border-b border-border px-5 py-4">
+            <div>
+              <h2 className="font-semibold text-foreground">
+                Needs attention
+              </h2>
+
+              <p className="mt-1 text-xs text-muted-foreground">
+                Priority items requiring admin review
+              </p>
+            </div>
+
+            <Link
+              href="/admin/loans"
+              className="text-xs font-semibold text-primary hover:underline"
+            >
+              Review all
+            </Link>
+          </div>
+
+          {/* Priority Items */}
+          <ul className="divide-y divide-border">
+            {[
+              ['KYC verification', '18 members awaiting review', 'Open'],
+              ['Loan applications', '12 applications pending', 'Review'],
+              ['Support inbox', '3 tickets require response', 'Respond'],
+              ['Published notices', '2 notices need confirmation', 'Check'],
+            ].map(([title, detail, action]) => (
+              <li
+                key={title}
+                className="flex items-center justify-between gap-4 px-5 py-4"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    {title}
+                  </p>
+
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {detail}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  className="shrink-0 rounded-lg border border-primary/20 px-3 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  {action}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
+      {/* Recent Activity will be added in Part 3 */}
     </div>
   )
 }
