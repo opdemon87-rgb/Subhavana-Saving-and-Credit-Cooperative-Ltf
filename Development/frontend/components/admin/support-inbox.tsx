@@ -2,6 +2,12 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import {
+  ChevronRight,
+  Headset,
+  Inbox,
+} from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 type SupportStatus = 'RECEIVED' | 'IN_PROGRESS' | 'RESOLVED'
 
@@ -73,6 +79,7 @@ export function SupportInbox() {
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState<'ALL' | SupportStatus>('ALL')
   const [category, setCategory] = useState<'ALL' | SupportCategory>('ALL')
+  const [selected, setSelected] = useState<SupportRequest | null>(null)
 
   const requests = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -123,7 +130,6 @@ export function SupportInbox() {
         className="mt-8 rounded-2xl border border-border bg-card p-4"
       >
         <div className="grid gap-3 md:grid-cols-[minmax(240px,1fr)_180px_180px]">
-          {/* Search */}
           <div className="relative">
             <input
               value={query}
@@ -134,7 +140,6 @@ export function SupportInbox() {
             />
           </div>
 
-          {/* Status Filter */}
           <select
             value={status}
             onChange={(event) =>
@@ -149,7 +154,6 @@ export function SupportInbox() {
             <option value="RESOLVED">Resolved</option>
           </select>
 
-          {/* Category Filter */}
           <select
             value={category}
             onChange={(event) =>
@@ -168,7 +172,85 @@ export function SupportInbox() {
         </div>
       </section>
 
-      {/* Support request list will be added in Part 3 */}
+      {/* Support Request List */}
+      <section
+        aria-label="Support requests"
+        className="mt-6 overflow-hidden rounded-2xl border border-border bg-card"
+      >
+        {requests.length === 0 ? (
+          <div className="flex min-h-64 flex-col items-center justify-center px-6 text-center">
+            <Inbox
+              aria-hidden="true"
+              className="size-9 text-muted-foreground"
+            />
+
+            <h2 className="mt-4 font-semibold">
+              No support requests found
+            </h2>
+
+            <p className="mt-2 text-sm text-muted-foreground">
+              Try changing the search or filters.
+            </p>
+          </div>
+        ) : (
+          <ul className="divide-y divide-border">
+            {requests.map((request) => (
+              <li key={request.id}>
+                <button
+                  type="button"
+                  onClick={() => setSelected(request)}
+                  className="group flex w-full items-center gap-4 px-4 py-4 text-left transition-colors hover:bg-secondary/60 sm:px-5"
+                >
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent text-primary">
+                    <Headset
+                      aria-hidden="true"
+                      className="size-5"
+                    />
+                  </span>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-xs font-semibold tabular-nums text-primary">
+                        {request.ticketNo}
+                      </p>
+
+                      <span
+                        className={cn(
+                          'rounded-full border px-2 py-0.5 text-[10px] font-semibold',
+                          statusStyles[request.status],
+                        )}
+                      >
+                        {request.status.replace('_', ' ')}
+                      </span>
+                    </div>
+
+                    <p className="mt-1 truncate text-sm font-semibold text-foreground">
+                      {request.subject}
+                    </p>
+
+                    <p className="mt-1 truncate text-xs text-muted-foreground">
+                      {request.name} · {request.category}
+                    </p>
+                  </div>
+
+                  <div className="hidden shrink-0 text-right sm:block">
+                    <p className="text-xs text-muted-foreground">
+                      {request.createdAt}
+                    </p>
+                  </div>
+
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      {/* Request details drawer will be added in Part 4 */}
     </div>
   )
 }
