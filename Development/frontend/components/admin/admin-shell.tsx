@@ -18,9 +18,10 @@ const navigation = [
   { label: 'Overview', href: '/admin', icon: LayoutDashboard },
   { label: 'Members', href: '/admin/members', icon: Users },
   { label: 'Loan applications', href: '/admin/loans', icon: Wallet },
-  { label: 'Support inbox', href: '/admin/support', icon: Headset },
+  { label: 'Support inbox', href: '/admin/support', icon: Headset },// Adding the support inbox link to the navigation
   { label: 'Content', href: '/admin/content', icon: FileText },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
+
 ]
 
 export function AdminShell({ children }: { children: ReactNode }) {
@@ -98,7 +99,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        {/* Page Content */}
+        {/* */}
         <main className="mx-auto min-h-[calc(100vh-65px)] max-w-[1600px] p-5 sm:p-8">
           {children}
         </main>
