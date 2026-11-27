@@ -5,7 +5,7 @@ const quickActions = [
   { title: 'Open Savings', desc: 'Start in 10 minutes', icon: PiggyBank, href: '#rates' },
   { title: 'Apply for Loan', desc: 'Quick approval', icon: HandCoins, href: '/apply-loan' },
   { title: 'Calculate EMI', desc: 'Plan repayments', icon: Calculator, href: '#emi' },
-  { title: 'Digital Services', desc: 'SMS & remittance', icon: Smartphone, href: '#digital' },
+  
 ]
 
 export function Hero() {
