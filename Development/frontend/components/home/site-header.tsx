@@ -92,7 +92,7 @@ export function SiteHeader() {
 </li>
 <li>
   <a
-    href="/branches"
+    href="#branches"
     className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
   >
     Branches
