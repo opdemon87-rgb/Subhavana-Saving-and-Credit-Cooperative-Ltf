@@ -6,6 +6,7 @@ import {
   Download,
   FileSpreadsheet,
   FileText,
+  Info,
   ScrollText,
   Shield,
   Users,
@@ -305,7 +306,21 @@ export function Downloads() {
           ))}
         </ul>
 
-        {/* Information footer will be added in Part 4 */}
+        {/* Information footer */}
+        <p className="mt-6 flex items-start gap-2 text-xs text-muted-foreground">
+          <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+
+          Files are updated after each quarter close and AGM. For older records,
+          contact the head office at{' '}
+
+          <a
+            href="mailto:info@subhavana.coop.np"
+            className="font-medium text-primary hover:underline"
+          >
+            info@subhavana.coop.np
+          </a>
+          .
+        </p>
       </div>
     </section>
   )
