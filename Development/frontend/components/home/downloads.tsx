@@ -1,4 +1,16 @@
 
+'use client'
+
+import { useState } from 'react'
+import {
+  FileSpreadsheet,
+  FileText,
+  ScrollText,
+  Shield,
+  Users,
+} from 'lucide-react'
+import { cn } from '@/lib/utils'
+
 type Category = 'Reports' | 'Forms' | 'Policies' | 'AGM'
 
 type Doc = {
@@ -151,7 +163,21 @@ const documents: Doc[] = [
   },
 ]
 
+const categories: {
+  id: Category | 'All'
+  label: string
+  icon: typeof FileText
+}[] = [
+  { id: 'All', label: 'All', icon: ScrollText },
+  { id: 'Reports', label: 'Reports', icon: FileSpreadsheet },
+  { id: 'Forms', label: 'Forms', icon: FileText },
+  { id: 'Policies', label: 'Policies', icon: Shield },
+  { id: 'AGM', label: 'AGM', icon: Users },
+]
+
 export function Downloads() {
+  const [active, setActive] = useState<Category | 'All'>('All')
+
   return (
     <section
       id="downloads"
@@ -184,7 +210,37 @@ export function Downloads() {
           </p>
         </div>
 
-        {/* Category tabs and document grid will be added in the next parts */}
+        {/* Category tabs */}
+        <div
+          role="tablist"
+          aria-label="Filter downloads by category"
+          className="mt-8 flex flex-wrap gap-2"
+        >
+          {categories.map(({ id, label, icon: Icon }) => {
+            const isActive = active === id
+
+            return (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActive(id)}
+                className={cn(
+                  'inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors',
+                  isActive
+                    ? 'border-primary bg-primary text-primary-foreground'
+                    : 'bg-background text-muted-foreground hover:border-primary/40 hover:text-foreground',
+                )}
+              >
+                <Icon className="size-3.5" aria-hidden="true" />
+                {label}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Document grid will be added in Part 3 */}
       </div>
     </section>
   )
