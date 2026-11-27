@@ -3,6 +3,7 @@
 
 import { useState } from 'react'
 import {
+  Download,
   FileSpreadsheet,
   FileText,
   ScrollText,
@@ -178,6 +179,11 @@ const categories: {
 export function Downloads() {
   const [active, setActive] = useState<Category | 'All'>('All')
 
+  const visible =
+    active === 'All'
+      ? documents
+      : documents.filter((doc) => doc.category === active)
+
   return (
     <section
       id="downloads"
@@ -240,7 +246,66 @@ export function Downloads() {
           })}
         </div>
 
-        {/* Document grid will be added in Part 3 */}
+        {/* Document grid */}
+        <ul
+          className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          aria-live="polite"
+        >
+          {visible.map((doc) => (
+            <li key={doc.title}>
+              <a
+                href={doc.href}
+                download
+                className="group flex h-full flex-col rounded-2xl border bg-background p-5 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="flex size-11 shrink-0 flex-col items-center justify-center rounded-xl bg-red-50 text-red-600">
+                    <FileText className="size-4" aria-hidden="true" />
+                    <span className="text-[9px] font-bold">PDF</span>
+                  </span>
+
+                  <div className="min-w-0 flex-1">
+                    <span className="flex flex-wrap items-center gap-2">
+                      <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-semibold uppercase text-primary">
+                        {doc.category}
+                      </span>
+
+                      {doc.isNew && (
+                        <span className="rounded bg-gold px-1.5 py-0.5 text-[10px] font-bold uppercase text-gold-foreground">
+                          New
+                        </span>
+                      )}
+                    </span>
+
+                    <h3 className="mt-1.5 text-sm font-semibold leading-snug text-foreground group-hover:text-primary">
+                      {doc.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
+                  {doc.description}
+                </p>
+
+                <div className="mt-4 flex items-center justify-between border-t pt-3 text-[11px] text-muted-foreground">
+                  <span>
+                    {doc.size} · Updated {doc.updated}
+                  </span>
+
+                  <span className="inline-flex items-center gap-1 font-semibold text-primary">
+                    <Download
+                      className="size-3.5 transition-transform group-hover:translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                    Download
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Information footer will be added in Part 4 */}
       </div>
     </section>
   )
